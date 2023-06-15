@@ -9,8 +9,8 @@ const Todo = ({ todos, handleDelClick }) => {
             width: "50vw",
         }}>
             <h1>Your Todo List.👇</h1>
-            {todos.length === 0 ? <h3>Add todo to display here.😃</h3> : (todos.map((value) => {
-                return <TodoItem todos={value} handleDelClick={handleDelClick} key={value.srn} title={value.title} desc={value.desc} />
+            {todos.length === 0 ? <h3>Add todo to display here.😃</h3> : (todos.map((todo) => {
+                return <TodoItem todos={todo} handleDelClick={handleDelClick} key={todo.srn} title={todo.title} desc={todo.desc} />
             }))}
         </div>
     )

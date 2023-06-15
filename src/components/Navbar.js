@@ -17,9 +17,8 @@ const Navbar = (props) => {
                             <a className="nav-link" href="#">About</a>
                         </li>
                     </ul>
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    <form className="d-flex" on>
+                        <input className="form-control me-2" onChange={props.handleSearchIn} type="search" placeholder="Search" aria-label="Search" />
                     </form>
                 </div>
             </div>

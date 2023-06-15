@@ -12,9 +12,9 @@ const AddTodo = (props) => {
             setTitle(title);
             setDesc(desc)
             props.addTodo(title, desc)
+            setTitle("");
+            setDesc("");
         }
-        setTitle("");
-        setDesc("");
     }
 
     return (

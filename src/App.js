@@ -5,15 +5,8 @@ import AddTodo from './components/AddTodo';
 import Todo from './components/Todo';
 
 function App() {
-  let [todos, setTodos] = useState([
-    {
-      srn: 1,
-      title: "Go to shamshan",
-      desc: "buy fruits"
-    }
-  ])
+  const [todos, setTodos] = useState([])
   const handleDelTodo = (todo) => {
-    console.log(todo);
     setTodos(todos.filter((e) => {
       return e !== todo;
     }
@@ -21,7 +14,6 @@ function App() {
   }
   let srn = todos.length === 0 ? 1 : todos[todos.length - 1].srn + 1;
   const addTodo = (title, desc) => {
-    console.log(title, desc);
     // srn = todos[todos.length - 1].srn + 1;
     const myTodo = {
       srn: srn,
@@ -29,11 +21,28 @@ function App() {
       desc: desc
     };
     setTodos([...todos, myTodo]);
+    localStorage.setItem(title, desc);
+  }
+  let isPresent;
+  const handleSearchIn = (e) => {
+    for (let i = 0; i < todos.length; i++) {
+      const todo = todos[i];
+      isPresent = todo.title.search(e.target.value);
+      if (isPresent === -1) {
+        console.log("Not present.");
+        return <h3>Not present 🥹</h3>
+      } else {
+        setTodos(todos.filter((e) => {
+          return e === todo;
+        }
+        ))
+      }
+    }
   }
 
   return (
     <>
-      <Navbar title="✅TodoList" />
+      <Navbar title="✅TodoList" handleSearchIn={handleSearchIn} />
       <AddTodo todos={todos} addTodo={addTodo} />
       <Todo todos={todos} handleDelClick={handleDelTodo} />
     </>
