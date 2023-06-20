@@ -5,13 +5,33 @@ import AddTodo from './components/AddTodo';
 import Todo from './components/Todo';
 
 function App() {
+
   const [todos, setTodos] = useState([])
+  const [modeStyle, setModeStyle] = useState("light");
+  window.onload = () => {
+    let lsItem = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const e = localStorage[i];
+      console.log(localStorage.key(i))
+      let desc = localStorage.getItem(localStorage.key(i));
+      if (localStorage.length > 0) {
+        lsItem.push({
+          srn: i + 1,
+          title: localStorage.key(i),
+          desc: desc
+        })
+      }
+    }
+    setTodos(lsItem);
+  }
   const handleDelTodo = (todo) => {
     setTodos(todos.filter((e) => {
+      localStorage.removeItem(e.title);
       return e !== todo;
     }
     ))
   }
+
   let srn = todos.length === 0 ? 1 : todos[todos.length - 1].srn + 1;
   const addTodo = (title, desc) => {
     // srn = todos[todos.length - 1].srn + 1;
@@ -23,28 +43,20 @@ function App() {
     setTodos([...todos, myTodo]);
     localStorage.setItem(title, desc);
   }
-  let isPresent;
-  const handleSearchIn = (e) => {
-    for (let i = 0; i < todos.length; i++) {
-      const todo = todos[i];
-      isPresent = todo.title.search(e.target.value);
-      if (isPresent === -1) {
-        console.log("Not present.");
-        return <h3>Not present 🥹</h3>
-      } else {
-        setTodos(todos.filter((e) => {
-          return e === todo;
-        }
-        ))
-      }
+
+  let handleModeChange = (e) => {
+    if (e.target.checked) {
+      setModeStyle("dark")
+    } else {
+      setModeStyle("light")
     }
   }
-
+  document.body.style.background = modeStyle === "dark" ? "#005656" : "lavender"
   return (
     <>
-      <Navbar title="✅TodoList" handleSearchIn={handleSearchIn} />
-      <AddTodo todos={todos} addTodo={addTodo} />
-      <Todo todos={todos} handleDelClick={handleDelTodo} />
+      <Navbar title="✅TodoList" modeStyle={modeStyle} handleModeChange={handleModeChange} />
+      <AddTodo todos={todos} addTodo={addTodo} modeStyle={modeStyle} />
+      <Todo todos={todos} handleDelClick={handleDelTodo} modeStyle={modeStyle} />
     </>
   );
 }
