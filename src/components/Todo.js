@@ -6,15 +6,17 @@ const Todo = ({ todos, handleDelClick, modeStyle }) => {
 
     return (
         <div className='container' style={{
-            margin: "0 auto",
-            width: "50vw",
+            // margin: "0 auto",
+            // width: "50vw",
             color: modeStyle === "dark" ? "white" : "black",
-            backgroundColor: modeStyle === "dark" ? "rgb(0, 86, 86)" : "lavender"
+            backgroundColor: modeStyle === "dark" ? "#51087E" : "lavender",
         }}>
-            <h1>Your Todo List.👇</h1>
-            {todos.length === 0 ? <h3>Add todo to display here.😃</h3> : (todos.map((todo) => {
-                return <TodoItem todos={todo} handleDelClick={handleDelClick} key={todo.srn} title={todo.title} desc={todo.desc} />
-            }))}
+            <h1 className='text-center'>Your Todo List.👇</h1>
+            <div className="container" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {todos.length === 0 ? <h3>Add todo to display here.😃</h3> : (todos.map((todo) => {
+                    return <TodoItem todos={todo} modeStyle={modeStyle} handleDelClick={handleDelClick} key={todo.srn} title={todo.title} desc={todo.desc} />
+                }))}
+            </div>
         </div>
     )
 }

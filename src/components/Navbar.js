@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar = (props) => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg" style={{ background: props.modeStyle === "dark" ? "teal" : "rgb(220, 220, 248)", fontWeight: 600 }}>
+            <nav className="navbar navbar-expand-lg" style={{ background: props.modeStyle === "dark" ? "#6C0BA9" : "rgb(220, 220, 248)", fontWeight: 600 }}>
                 <div className="container-fluid">
                     <a className="navbar-brand" style={{ color: props.modeStyle === "dark" ? "white" : "black" }} href="/">{props.title}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

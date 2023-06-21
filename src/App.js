@@ -53,7 +53,7 @@ function App() {
       setModeStyle("light")
     }
   }
-  document.body.style.background = modeStyle === "dark" ? "#005656" : "lavender"
+  document.body.style.background = modeStyle === "dark" ? "#51087E" : "lavender"
   return (
     <>
       <Navbar title="✅TodoList" modeStyle={modeStyle} handleModeChange={handleModeChange} />
