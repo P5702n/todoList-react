@@ -26,7 +26,9 @@ function App() {
   }
   const handleDelTodo = (todo) => {
     setTodos(todos.filter((e) => {
-      localStorage.removeItem(e.title);
+      if (todo.title === e.title) {
+        localStorage.removeItem(e.title)
+      }
       return e !== todo;
     }
     ))

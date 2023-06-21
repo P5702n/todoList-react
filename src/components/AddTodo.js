@@ -28,7 +28,7 @@ const AddTodo = (props) => {
                     <label htmlFor="exampleFormControlInput1" style={{ color: props.modeStyle === "dark" ? "white" : "black" }} className="form-label">Enter Todo title</label>
                     <input type="text" className="form-control" style={{ color: props.modeStyle === "dark" ? "white" : "black", background: props.modeStyle === "dark" ? "teal" : "rgb(220, 220, 248)" }} id="exampleFormControlInput1" onChange={(e) => {
                         setTitle(e.target.value);
-                    }} value={title} key={props.todos.length + 1} placeholder="Todo title here." />
+                    }} value={title} key={props.todos.length + 1} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlTextarea1" style={{ color: props.modeStyle === "dark" ? "white" : "black" }} className="form-label">Your Todo description here.</label>
@@ -36,7 +36,7 @@ const AddTodo = (props) => {
                         setDesc(e.target.value);
                     }} rows="4"></textarea>
                 </div>
-                <button className="btn btn-sm btn-success" onClick={submit}>Add todo</button>
+                <button className="btn btn-sm btn-info" style={{ backgroundColor: props.modeStyle === "light" ? "rgb(220, 220, 248)" : "#0f7e67", color: props.modeStyle === "light" ? "black" : "white" }} onClick={submit}>Add todo</button>
             </div>
         </>
     )
